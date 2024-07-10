@@ -1,0 +1,25 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block contenido %}
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <h1 class="titulos">Bienvenido a VGPROJECT</h1>
+    <header>
+        <img class = "imagen-logo" src="{% static 'imagenes/logo.png' %}" alt="">
+        <h1 class="titulos">Introduccion</h1>
+        <p class="navCategorias">Esta plataforma esta enfocada en ayudar a los desarrolladores de videojuegos a encontrar un equipo que puedan aportarles a sus proyectos para que puedan agilizar el desarrollo y sacar su proyecto al publico, tambien podran subir avances en comunidad y subir el juego terminado a la tienda. </p>
+        <h1 class="titulos">Sobre nosotros</h1>
+        <p class="navCategorias">Somos un pequeño equipo que busca la forma de ayudarle a los desarrolladores de videojuegos a sacar sus proyectos de forma completa mediante esta plataforma</p>
+        </header>
+    <footer>
+        <div class="contenedor-wpp icons">
+        <a class = "icon-wpp" href="https://api.whatsapp.com/send?phone=3023800821&text=Necesito%20mas%20informaci%C3%B3n%20sobre%20el%20proyecto" target="blank"><i class="bi bi-whatsapp wpp"></i></a>
+        </div>
+        <div class="icons icon-email">
+    <a class = "email" href = "mailto: tomi12mc@gmail.com"><i class="bi bi-envelope"></i></a>
+    </div>
+    </footer>
+</body>
+</html>
+{% endblock %}

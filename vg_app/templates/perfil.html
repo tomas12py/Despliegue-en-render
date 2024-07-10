@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{%load static%} 
+{%block contenido%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href = "{% static 'imagenes/css/style.css' %}">
+</head>
+<body>
+    <main>
+      {% for datos_p in perfil_datos%}
+      <nav>
+    <ul class="nav mx-4">
+        <li class="nav-item">
+          <img class = "icono-perfil mt-2" src="{{datos_p.imagen_perfil.url}}" alt="">
+        </li>
+        <li class="nav-item">
+          <h3 class = "margin-perfil nombre-perfil">{{datos_p.nombre_perfil}}</h3>
+        </li>
+       {% endfor %}
+         <!-- Button trigger modal -->
+      <li class = "nav-item">
+        <button type="button" class="btn bg-success text-white button-config-perfil" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Configuracion perfil
+    </button>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Ingresa tu informacion</h1>
+        <button type="button" class="btn-close bg-danger" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class  = "" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="perfil-form">
+        <label class = "" for="nombre-perfil">Ingresa tu nombre</label>
+        <input class = "" type="text" name="nombre_perfil" required>
+        </div>
+        <div class="perfil-form">
+        <label for="sobremi">Ingresa un sobre mi</label>
+        <input type="text" name="sobremi" required>
+        </div>
+        <div class="perfil-form">
+        <label for="github_perfil">Ingresa tu enlace de github</label>
+        <input type="url" name="github_perfil" required>
+        </div>
+        <div class="perfil-form">
+        <label for="correo_perfil">Ingresa tu direccion de correo electronico</label>
+        <input type="email" name="correo_perfil" required>
+        </div>
+        <div class="perfil-form">
+        <input type="file" name="imagen_perfil" required>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+        <input type="submit" class="btn btn-success " value = "Enviar">
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+</li>
+<li class="nav-item">
+  <span class = "btn btn-success button-config-perfil"><a class= "text-white " href="/proyectos">Agrega un nuevo proyecto</a><span>
+</li>
+<li  class="nav-item">
+  <form method="post" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button class="btn btn-success button-config-perfil" type="submit">Salir de tu cuenta</button>
+</form>
+</li>
+</ul>
+      {% for datos_p in perfil_datos %}
+      <div class="card card-sobre-mi">
+        <div class="card-body">
+          <h5 class="card-title">Sobre mi</h5>
+          <p class="card-text">
+            {{datos_p.sobremi}}
+        </p>
+        <a href="{{datos_p.github_perfil}}" target = "blank"  class="card-link-github"><i class="bi bi-github"></i></a>
+        <a href="mailto: {{datos_p.correo_perfil}}"  class = "card-link-email"><i class="fa-regular fa-envelope"></i></a>
+        </div>
+      </div>
+      {% endfor %}
+      <h5 class = "titulo-proyectos">Estos son tus proyectos</h5>
+      {% for proyecto_dato in proyecto_datos%}
+      <div class="card card-proyectos">
+        <img src="{{proyecto_dato.archivo_proyecto.url}}" class="card-img-top perfil-img" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{proyecto_dato.titulo_proyecto}}</h5>
+          <p>{{proyecto_dato.descripcion_proyecto}}</p>
+          <p class="card-text">{{proyecto_dato.categoria_proyecto}}</p>
+          <span  class = "btn btn-danger perfil-functions"><a href="eliminar/{{proyecto_dato.id}}" class="text-white">Eliminar proyecto</a></span>
+          <span class = "btn btn-success perfil-functions"><a href="editar/{{proyecto_dato.id}}" class="text-white">Editar proyecto</a></span>
+        </div>
+      </div>
+      {% endfor %}
+    </nav>
+    </main>
+</body>
+</html>
+{%endblock%}

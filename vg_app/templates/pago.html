@@ -1,0 +1,37 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block contenido %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href = "{% static 'imagenes/css/style.css' %}">
+</head>
+<body>
+    <h1 class = "titulo-carrito">Carrito de compras</h1>
+    <main>
+    <div class="card mt-4 card-carrito" style = "width: 18rem;" >
+        <img src="{% static 'imagenes/league-of-legends.avif'%}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">League of legends</h5>
+          <p class="card-text">Precio: <small>150</small></p>
+        </div>
+        <div class="card-body">
+          <a href="#" class="card-link"><button class = "btn btn-success ">Comprar</button></a>
+          <a href="#" class="card-link "><i class="bi bi-trash fs-3 text-danger ms-2"></i></a>
+        </div>
+      </div>
+      <div class="card mt-4 card-carrito " style = "width: 18rem;">
+        <img src="{% static 'imagenes/gta5.jpg'%}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Grand theft auto</h5>
+          <p class="card-text">Precio: <small>250</small></p>
+        </div>
+        <div class="card-body">
+          <a href="#" class="card-link"><button class = "btn btn-success ">Comprar</button></a>
+          <a href="#" class="card-link "><i class="bi bi-trash fs-3 text-danger ms-2"></i></a>
+        </div>
+    </div>
+  </main>
+</body>
+</html>
+{% endblock %}

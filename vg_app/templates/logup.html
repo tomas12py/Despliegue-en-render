@@ -1,0 +1,36 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block contenido %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'imagenes/css/style.css' %}">
+</head>
+<body>
+  <form class="form" method="post">
+    {% csrf_token %}
+    <p class="title text-success">Registrate </p>
+        <label>
+            <input class="input" type="text" placeholder=""  name = "username" required>
+            <span>Nombre de usuario</span>
+        </label>        
+    <label>
+        <input class="input" type="email" placeholder="" name = "email" required>
+        <span>Correo electronico</span>
+    </label> 
+        
+    <label>
+        <input class="input" type="password" placeholder="" name = "password1" required>
+        <span>Contraseña</span>
+    </label>
+    <label>
+        <input class="input" type="password" placeholder="" name = "password2" required>
+        <span>Confirmar contraseña</span>
+    </label>
+    <button class="submit bg-success">Enviar</button>
+    <p class="signin">Ya tienes una cuenta? <a class = "text-success" href="/login">Inicia sesion</a> </p>
+</form>
+</main>
+</body>
+</html>
+{% endblock %}
