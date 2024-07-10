@@ -2,7 +2,6 @@
 # Exit on error
 set -o errexit
 
-pip install -r requeriments.txt
 
 # Convert static asset files
 python manage.py collectstatic --no-input
