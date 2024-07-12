@@ -37,5 +37,5 @@ urlpatterns = [
     path("editar/<id>",editar_producto),
     path("edicion-completada/",edicion_completada)
 ]  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-urlpatterns += staticfiles_urlpatterns ()
+
 
